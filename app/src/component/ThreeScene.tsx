@@ -5,7 +5,9 @@ import useSliderStore from "../store/SliderStroe";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { preloadAllFrames, frameCache } from "../component/preloadUtils";// 全局缓存：存储所有已加载的 Points
-
+interface ThreeSceneProps {
+  style?: React.CSSProperties;
+}
 function StablePointCloud() {
   const { scene } = useThree();
   const sliderValue = useSliderStore((state) => state.SliderValue);
@@ -67,7 +69,6 @@ function StablePointCloud() {
         // 注意：不要 dispose 缓存中的 geometry/material！因为会被复用
         // 如果你确定不再需要，可以 dispose
         // currentPointsRef.current.geometry.dispose();
-        // ...
         currentPointsRef.current = null;
       }
     };
@@ -76,7 +77,7 @@ function StablePointCloud() {
   return null;
 }
 
-function ThreeScene() {
+function ThreeScene({ style }: ThreeSceneProps) {
   const formatNumber = useSliderStore((state) => state.formatNumber);
 
   // 👉 在这里预加载所有帧（只执行一次）
@@ -87,8 +88,9 @@ function ThreeScene() {
   }, [formatNumber]);
 
   return (
-    <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0 }}>
+    <div style={style}>
       <Canvas>
+        <color attach="background" args={['']} />
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} />
         <OrbitControls enableZoom enablePan enableRotate />

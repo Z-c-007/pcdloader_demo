@@ -2,7 +2,6 @@ import React from "react";
 import type { InputNumberProps } from "antd";
 import { Col, InputNumber, Row, Slider, Space } from "antd";
 import useSliderStore, { SliderState } from "../store/SliderStroe";
-// import "antd/dist/reset.css";
 const IntegerStep: React.FC = () => {
     const sliderValue = useSliderStore((state: SliderState) => state.SliderValue);
 
@@ -15,12 +14,11 @@ const IntegerStep: React.FC = () => {
     return (
         <div
             style={{
-                position: "absolute",
                 width: "380px",
                 height: "48px",
                 top: "7%",
                 left: "9px",
-                backgroundColor: "#fca84f",
+                backgroundColor: "#7ec3f1ff",
                 borderRadius: "5px",
                 padding: "9px",
             }}

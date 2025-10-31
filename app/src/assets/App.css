@@ -2,5 +2,5 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden; /* 关键：禁止滚动条 */
+  /* overflow: hidden; 关键：禁止滚动条 */
 }
